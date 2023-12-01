@@ -1,0 +1,39 @@
+### Rick and Morty API
+GET https://rickandmortyapi.com/api
+
+### Rick and Morty Characters
+GET https://rickandmortyapi.com/api/character
+
+### Rick and Morty get a single character
+GET https://rickandmortyapi.com/api/character/1
+
+###
+# name: filter by the given name.
+# status: filter by the given status (alive, dead or unknown).
+# species: filter by the given species.
+# type: filter by the given type.
+# gender: filter by the given gender (female, male, genderless or unknown).
+GET https://rickandmortyapi.com/api/character?name=rick&status=alive&gender=female
+
+###
+GET https://rickandmortyapi.com/api/location
+
+###
+GET https://rickandmortyapi.com/api/location/1
+
+###
+# name: filter by the given name.
+# type: filter by the given type.
+# dimension: filter by the given dimension.
+GET https://rickandmortyapi.com/api/location?name=earth&type=planet&dimension=c-137
+
+###
+GET https://rickandmortyapi.com/api/episode
+
+###
+GET https://rickandmortyapi.com/api/episode/1
+
+###
+# name: filter by the given name.
+# episode: filter by the given episode code.
+GET https://rickandmortyapi.com/api/episode?name=pilot&episode=s01e01
