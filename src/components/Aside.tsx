@@ -10,17 +10,15 @@ type AsideProps = {
 
 export const Aside: FC<AsideProps> = ({ className }) => (
   <aside className={clsx('bg-amber-100', className)}>
-    <p>
-      <nav>
-        <ul>
-          {routes.map(route => (
-            <li key={route.path}>
-              <NavLink route={route} />
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </p>
+    <nav>
+      <ul>
+        {routes.map(route => (
+          <li key={route.path}>
+            <NavLink route={route} />
+          </li>
+        ))}
+      </ul>
+    </nav>
   </aside>
 )
 

@@ -1,26 +1,36 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Characters from './routes/characters'
-import Episodes from './routes/episodes'
-import Locations from './routes/locations'
-import Root from './routes/root'
+import { Layout } from './components/Layout'
+import Characters, { loader as charactersLoader } from './routes/characters'
+import Episodes, { loader as episodesLoader } from './routes/episodes'
+import ErrorPage from './routes/error'
+import Home from './routes/home'
+import Locations, { loader as locationsLoader } from './routes/locations'
 import './styles/global.css'
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Root />,
+    element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
+        path: '/',
+        element: <Home />
+      },
+      {
         path: 'characters',
-        element: <Characters />
+        element: <Characters />,
+        errorElement: <div>Something went wrong</div>,
+        loader: charactersLoader
       },
       {
         path: 'locations',
-        element: <Locations />
+        element: <Locations />,
+        loader: locationsLoader
       },
       {
         path: 'episodes',
-        element: <Episodes />
+        element: <Episodes />,
+        loader: episodesLoader
       }
     ]
   }

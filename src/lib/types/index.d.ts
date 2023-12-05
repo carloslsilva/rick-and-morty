@@ -1,1 +1,5 @@
+export * from './Character'
+export * from './Episode'
+export * from './Info'
+export * from './Location'
 export * from './Route'

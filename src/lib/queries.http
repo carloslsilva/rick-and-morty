@@ -13,7 +13,7 @@ GET https://rickandmortyapi.com/api/character/1
 # species: filter by the given species.
 # type: filter by the given type.
 # gender: filter by the given gender (female, male, genderless or unknown).
-GET https://rickandmortyapi.com/api/character?name=rick&status=alive&gender=female
+GET https://rickandmortyapi.com/api/character?page=1&name=rick&status=dead&gender=male
 
 ###
 GET https://rickandmortyapi.com/api/location
