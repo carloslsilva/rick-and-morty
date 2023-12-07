@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import Characters, { loader as charactersLoader } from './routes/characters'
-import Episodes, { loader as episodesLoader } from './routes/episodes'
+import { charactersLoader, episodesLoader, locationsLoader } from './loaders'
+import Characters from './routes/characters'
+import Episodes from './routes/episodes'
 import ErrorPage from './routes/error'
 import Home from './routes/home'
-import Locations, { loader as locationsLoader } from './routes/locations'
+import Locations from './routes/locations'
 import './styles/global.css'
 
 const router = createBrowserRouter([
@@ -18,19 +19,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'characters',
-        element: <Characters />,
-        errorElement: <div>Something went wrong</div>,
-        loader: charactersLoader
+        loader: charactersLoader,
+        element: <Characters />
       },
       {
         path: 'locations',
-        element: <Locations />,
-        loader: locationsLoader
+        loader: locationsLoader,
+        element: <Locations />
       },
       {
         path: 'episodes',
-        element: <Episodes />,
-        loader: episodesLoader
+        loader: episodesLoader,
+        element: <Episodes />
       }
     ]
   }
