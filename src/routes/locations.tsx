@@ -1,15 +1,13 @@
 import { useLoaderData } from 'react-router-dom'
-import { Nav } from '../components/Nav'
-import { useInfo } from '../hooks/useInfo'
+import { Nav } from '../components/ui/Nav'
 import type { Location } from '../lib/types'
 
 export default function Locations() {
   const { results: locations } = useLoaderData() as { results: Location[] }
-  const { next, prev } = useInfo()
 
   return (
     <>
-      <Nav next={next} prev={prev} />
+      <Nav />
       <h1 className='mb-8 text-3xl font-bold'>Locations</h1>
       <div className='divide-y-2'>
         {locations.map(location => (
@@ -18,6 +16,7 @@ export default function Locations() {
             <h3>
               {location.type} | {location.dimension}
             </h3>
+            <p>{location.residents[0]}</p>
           </div>
         ))}
       </div>

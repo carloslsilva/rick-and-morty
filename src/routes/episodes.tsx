@@ -1,15 +1,13 @@
 import { useLoaderData } from 'react-router-dom'
-import { Nav } from '../components/Nav'
-import { useInfo } from '../hooks/useInfo'
+import { Nav } from '../components/ui/Nav'
 import type { Episode } from '../lib/types'
 
 export default function Episodes() {
   const { results: episodes } = useLoaderData() as { results: Episode[] }
-  const { next, prev } = useInfo()
 
   return (
     <>
-      <Nav next={next} prev={prev} />
+      <Nav />
       <h1 className='mb-8 text-3xl font-bold'>Episodes</h1>
       <div className='divide-y-2'>
         {episodes.map(episode => (
