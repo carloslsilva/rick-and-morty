@@ -25,7 +25,7 @@ export const CharacterCard: FC<Props> = ({ character }) => (
       src={character.image}
       alt={character.name}
     />
-    <div className='flex flex-col justify-between'>
+    <div className='flex flex-col'>
       <Description character={character} />
       <Location label='Last known location:' name={character.location.name} />
       <Location label='First seen in:' name={character.origin.name} />
