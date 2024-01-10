@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { charactersLoader } from './loaders'
+import { characterLoader, charactersLoader } from './loaders'
+import Character from './routes/character'
 import Characters from './routes/characters'
 import ErrorPage from './routes/error'
 import Home from './routes/home'
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
         path: 'characters',
         loader: charactersLoader,
         element: <Characters />
+      },
+      {
+        path: 'characters/:id',
+        loader: characterLoader,
+        element: <Character />
       }
     ]
   }

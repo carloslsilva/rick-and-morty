@@ -3,7 +3,7 @@ type Location = {
   url: string
 }
 
-export interface Character {
+export type Character = {
   id: number
   name: string
   status: string

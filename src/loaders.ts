@@ -1,4 +1,5 @@
 import { LoaderFunctionArgs } from 'react-router-dom'
+import { getCharacter } from './lib/getCharacter'
 import { getData } from './lib/getData'
 
 export async function charactersLoader({ request }: LoaderFunctionArgs) {
@@ -29,6 +30,12 @@ export async function locationsLoader({ request }: LoaderFunctionArgs) {
     'type',
     'dimension'
   ])
+
+  return data
+}
+
+export async function characterLoader({ params }: LoaderFunctionArgs) {
+  const data = await getCharacter(Number(params.id!))
 
   return data
 }

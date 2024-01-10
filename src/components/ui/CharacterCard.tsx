@@ -1,5 +1,7 @@
 import clsx from 'clsx'
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
+import { extractIdFromUrl } from '../../lib/extractIdFromUrl'
 import type { Character } from '../../lib/types'
 
 type Props = {
@@ -7,15 +9,13 @@ type Props = {
 }
 
 export const CharacterCard: FC<Props> = ({ character }) => (
-  <a
+  <Link
     className={clsx(
       'group flex flex-col justify-center gap-4 rounded-lg bg-primary-700',
       'md:flex-row md:items-center md:justify-start',
       'hover:scale-105'
     )}
-    href={character.url}
-    rel='noopener noreferrer'
-    target='_blank'
+    to={extractIdFromUrl(character.url) || '#'}
   >
     <img
       className={clsx(
@@ -30,7 +30,7 @@ export const CharacterCard: FC<Props> = ({ character }) => (
       <Location label='Last known location:' name={character.location.name} />
       <Location label='First seen in:' name={character.origin.name} />
     </div>
-  </a>
+  </Link>
 )
 
 const Description: FC<Props> = ({ character }) => (

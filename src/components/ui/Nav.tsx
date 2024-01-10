@@ -5,8 +5,9 @@ type Props = {
   next: string
   prev: string
 }
+
 export const Nav: FC<Props> = ({ next, prev }) => (
-  <div>
+  <div className='text-primary-100'>
     {prev && <Link to={prev}>Prev</Link>}
     {next && <Link to={next}>Next</Link>}
   </div>
