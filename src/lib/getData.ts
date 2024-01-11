@@ -7,7 +7,7 @@ export async function getData(
   const requestParams = new URL(url).searchParams
   filterParams.forEach(filterParam => {
     const value = requestParams.get(filterParam)
-    if (value) fetchUrl.searchParams.set(filterParam, value)
+    if (value !== null) fetchUrl.searchParams.set(filterParam, value)
   })
 
   const response = await fetch(fetchUrl)
