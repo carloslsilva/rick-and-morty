@@ -1,55 +1,66 @@
+import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCharacterSearchForm } from '../../hooks/useCharacterSearchForm'
 
 export const CharacterSearchForm = () => {
   const { onSubmit, onReset, register } = useCharacterSearchForm()
 
   return (
-    <form onSubmit={onSubmit} className='flex flex-col space-y-4 py-8'>
-      <label className='flex flex-col space-y-1'>
-        <span>Name:</span>
-        <input
-          className='rounded border border-gray-300 p-2'
-          placeholder='Input a name...'
-          autoComplete='off'
-          {...register('name')}
-        />
-      </label>
-      <label className='flex flex-col space-y-1'>
-        <span>Gender:</span>
-        <select
-          {...register('gender')}
-          className='rounded border border-gray-300 p-2'
-        >
-          <option value=''>Select ...</option>
-          <option value='male'>Male</option>
-          <option value='female'>Female</option>
-          <option value='genderless'>Genderless</option>
-          <option value='unknown'>Unknown</option>
-        </select>
-      </label>
-      <label className='flex flex-col space-y-1'>
-        <span>Status:</span>
-        <select
-          {...register('status')}
-          className='rounded border border-gray-300 p-2'
-        >
-          <option value=''>Select ...</option>
-          <option value='alive'>Alive</option>
-          <option value='dead'>Dead</option>
-          <option value='unknown'>Unknown</option>
-        </select>
-      </label>
-      <button
-        className='rounded bg-amber-500 py-2 text-primary-100'
-        type='submit'
+    <form className='flex flex-row py-12' onSubmit={onSubmit}>
+      <input
+        className='flex-grow rounded-l-lg bg-primary-100 px-4 py-2 text-primary-500 outline-none '
+        placeholder='Search by name...'
+        autoComplete='off'
+        {...register('name')}
+      />
+      <select
+        className='appearance-none bg-primary-100 p-2 text-primary-600 outline-none hover:bg-primary-200'
+        {...register('status')}
       >
-        Search
-      </button>
+        <option className='hover:bg-primary-400' value=''>
+          Status...
+        </option>
+        <option className='hover:bg-primary-400' value='alive'>
+          Alive
+        </option>
+        <option className='hover:bg-primary-400' value='dead'>
+          Dead
+        </option>
+        <option className='hover:bg-primary-400' value='unknown'>
+          Unknown
+        </option>
+      </select>
+      <select
+        className='appearance-none bg-primary-100 p-2 text-primary-600 outline-none hover:bg-primary-200'
+        {...register('gender')}
+      >
+        <option className='hover:bg-primary-400' value=''>
+          Gender...
+        </option>
+        <option className='hover:bg-primary-400' value='male'>
+          Male
+        </option>
+        <option className='hover:bg-primary-400' value='female'>
+          Female
+        </option>
+        <option className='hover:bg-primary-400' value='genderless'>
+          Genderless
+        </option>
+        <option className='hover:bg-primary-400' value='unknown'>
+          Unknown
+        </option>
+      </select>
       <button
-        className='rounded bg-red-600 py-2 text-primary-100'
+        className='inline-flex w-12 items-center justify-center bg-red-700 text-primary-100 hover:bg-red-800'
         onClick={onReset}
       >
-        Clear Fields
+        <FontAwesomeIcon icon={faTrash} />
+      </button>
+      <button
+        className='inline-flex w-12 items-center justify-center rounded-r-lg bg-amber-500 text-primary-100 hover:bg-amber-600'
+        type='submit'
+      >
+        <FontAwesomeIcon icon={faSearch} />
       </button>
     </form>
   )
