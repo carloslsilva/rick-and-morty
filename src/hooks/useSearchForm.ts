@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import type { KeyboardEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
@@ -30,7 +31,11 @@ export function useSearchForm() {
     navigate(url)
   })
 
+  const onKeyDown = (e: KeyboardEvent<HTMLFormElement>) => {
+    if (e.key === 'Enter') e.preventDefault()
+  }
+
   const onReset = () => reset()
 
-  return { onSubmit, onReset, register }
+  return { onSubmit, onReset, onKeyDown, register }
 }

@@ -1,13 +1,17 @@
 import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import clsx from 'clsx'
+
 import { useSearchForm } from '../hooks/useSearchForm'
 
 export const SearchForm = () => {
-  const { onSubmit, onReset, register } = useSearchForm()
+  const { onSubmit, onReset, onKeyDown, register } = useSearchForm()
 
   return (
-    <form className={clsx('flex flex-col', 'sm:flex-row')} onSubmit={onSubmit}>
+    <form
+      className='flex flex-col sm:flex-row'
+      onKeyDown={onKeyDown}
+      onSubmit={onSubmit}
+    >
       <input
         className='flex-grow rounded-t-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none focus:bg-primary-100 sm:rounded-none sm:rounded-l-lg'
         placeholder='Search by name...'
