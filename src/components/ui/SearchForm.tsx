@@ -8,45 +8,45 @@ export const SearchForm = () => {
   return (
     <form className='flex flex-row' onSubmit={onSubmit}>
       <input
-        className='flex-grow rounded-l-lg bg-primary-100 px-4 py-2 text-primary-500 outline-none'
+        className='flex-grow rounded-l-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none focus:bg-primary-100'
         placeholder='Search by name...'
         autoComplete='off'
         {...register('name')}
       />
       <select
-        className='appearance-none bg-primary-100 p-2 text-primary-600 outline-none hover:bg-primary-200'
+        className='appearance-none bg-primary-200 p-2 text-primary-600 outline-none hover:bg-primary-300'
         {...register('status')}
       >
-        <option className='hover:bg-primary-400' value=''>
+        <option className='' value=''>
           Status...
         </option>
-        <option className='hover:bg-primary-400' value='alive'>
+        <option className='' value='alive'>
           Alive
         </option>
-        <option className='hover:bg-primary-400' value='dead'>
+        <option className='' value='dead'>
           Dead
         </option>
-        <option className='hover:bg-primary-400' value='unknown'>
+        <option className='' value='unknown'>
           Unknown
         </option>
       </select>
       <select
-        className='appearance-none bg-primary-100 p-2 text-primary-600 outline-none hover:bg-primary-200'
+        className='appearance-none bg-primary-200 p-2 text-primary-600 outline-none hover:bg-primary-300'
         {...register('gender')}
       >
-        <option className='hover:bg-primary-400' value=''>
+        <option className='' value=''>
           Gender...
         </option>
-        <option className='hover:bg-primary-400' value='male'>
+        <option className='' value='male'>
           Male
         </option>
-        <option className='hover:bg-primary-400' value='female'>
+        <option className='' value='female'>
           Female
         </option>
-        <option className='hover:bg-primary-400' value='genderless'>
+        <option className='' value='genderless'>
           Genderless
         </option>
-        <option className='hover:bg-primary-400' value='unknown'>
+        <option className='' value='unknown'>
           Unknown
         </option>
       </select>
