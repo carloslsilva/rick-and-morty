@@ -1,12 +1,12 @@
 import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useCharacterSearchForm } from '../../hooks/useCharacterSearchForm'
+import { useSearchForm } from '../../hooks/useSearchForm'
 
-export const CharacterSearchForm = () => {
-  const { onSubmit, onReset, register } = useCharacterSearchForm()
+export const SearchForm = () => {
+  const { onSubmit, onReset, register } = useSearchForm()
 
   return (
-    <form className='flex flex-row py-12' onSubmit={onSubmit}>
+    <form className='flex flex-row py-16' onSubmit={onSubmit}>
       <input
         className='flex-grow rounded-l-lg bg-primary-100 px-4 py-2 text-primary-500 outline-none'
         placeholder='Search by name...'

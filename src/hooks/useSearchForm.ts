@@ -3,19 +3,19 @@ import { useForm } from 'react-hook-form'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
-const CharacterSearchFormSchema = z.object({
+const Schema = z.object({
   name: z.string(),
   gender: z.enum(['', 'male', 'female', 'genderless', 'unknown']),
   status: z.enum(['', 'alive', 'dead', 'unknown'])
 })
 
-type CharacterSearch = z.infer<typeof CharacterSearchFormSchema>
+type SearchType = z.infer<typeof Schema>
 
-export function useCharacterSearchForm() {
+export function useSearchForm() {
   const location = useLocation()
   const navigate = useNavigate()
-  const { handleSubmit, reset, register } = useForm<CharacterSearch>({
-    resolver: zodResolver(CharacterSearchFormSchema),
+  const { handleSubmit, reset, register } = useForm<SearchType>({
+    resolver: zodResolver(Schema),
     defaultValues: { name: '', gender: '', status: '' }
   })
 

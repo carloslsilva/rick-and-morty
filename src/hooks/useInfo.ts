@@ -9,7 +9,7 @@ export function useInfo() {
     url ? new URL(url).searchParams.get('page') : null
 
   const getUrl = (page: string | null) => {
-    if (!page) return location.pathname
+    if (!page) return '#'
 
     const urlSearchParams = new URLSearchParams(location.search)
     urlSearchParams.set('page', page)

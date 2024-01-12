@@ -8,7 +8,7 @@ type Props = {
   character: Character
 }
 
-export const CharacterCard: FC<Props> = ({ character }) => (
+export const Card: FC<Props> = ({ character }) => (
   <Link
     className={clsx(
       'group flex flex-col justify-center gap-4 rounded-lg bg-primary-700',
