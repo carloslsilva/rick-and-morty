@@ -7,7 +7,7 @@ export async function getCharacter(id: number): Promise<CharacterResponse> {
     characterData.episode.map(async (e: string) => await fetchEpisode(e))
   )
 
-  return { ...characterData, episode: episodesData }
+  return { character: characterData, episodes: episodesData }
 }
 
 async function fetchCharacter(id: number) {

@@ -1,5 +1,6 @@
 import type { Character, Episode } from '.'
 
-export type CharacterResponse = Omit<Character, 'episode'> & {
-  episode: Episode[]
+type CharacterResponse = {
+  character: Character
+  episodes: Episode[]
 }

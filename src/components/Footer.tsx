@@ -1,7 +1,8 @@
 import { FC } from 'react'
+import { Container } from './ui/Container'
 
 export const Footer: FC = () => (
-  <footer className='bg-cyan-100'>
+  <Container variant='long' as='footer'>
     <p>© 2021</p>
-  </footer>
+  </Container>
 )
