@@ -4,18 +4,34 @@ import { Link } from 'react-router-dom'
 import { extractIdFromUrl } from '../../lib/extractIdFromUrl'
 import type { Character } from '../../lib/types'
 
-type Props = {
+type CardProps = {
+  character: Character
+  link?: boolean
+}
+
+export const Card: FC<CardProps> = ({ character, link }) => {
+  return link ? (
+    <Link
+      className='group hover:scale-105'
+      to={extractIdFromUrl(character.url) || '#'}
+    >
+      <Character character={character} />
+    </Link>
+  ) : (
+    <Character character={character} />
+  )
+}
+
+type CharacterProps = {
   character: Character
 }
 
-export const Card: FC<Props> = ({ character }) => (
-  <Link
+const Character: FC<CharacterProps> = ({ character }) => (
+  <div
     className={clsx(
-      'group flex flex-col justify-center gap-4 rounded-lg bg-primary-700',
-      'md:flex-row md:items-center md:justify-start',
-      'hover:scale-105'
+      'flex flex-col justify-center gap-4 rounded-lg bg-primary-700',
+      'md:flex-row md:items-center md:justify-start'
     )}
-    to={extractIdFromUrl(character.url) || '#'}
   >
     <img
       className={clsx(
@@ -30,10 +46,10 @@ export const Card: FC<Props> = ({ character }) => (
       <Location label='Last known location:' name={character.location.name} />
       <Location label='First seen in:' name={character.origin.name} />
     </div>
-  </Link>
+  </div>
 )
 
-const Description: FC<Props> = ({ character }) => (
+const Description: FC<CharacterProps> = ({ character }) => (
   <div className='mb-2'>
     <h2 className='text-2xl font-bold tracking-tight text-primary-100 group-hover:text-amber-500'>
       {character.name}

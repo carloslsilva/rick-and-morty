@@ -1,18 +1,35 @@
 import { useLoaderData } from 'react-router-dom'
+import { BackButton } from '../components/ui/BackButton'
+import { Card } from '../components/ui/Card'
 import { Container } from '../components/ui/Container'
+import { HomeLink } from '../components/ui/HomeLink'
 import type { CharacterResponse } from '../lib/types'
 
 export default function Character() {
   const response = useLoaderData() as CharacterResponse
   return (
-    <Container variant='long'>
-      <div className='divide-y-2'>
+    <>
+      <Container
+        className='flex flex-row items-center justify-between py-16'
+        variant='long'
+        as='header'
+      >
+        <HomeLink>Rick & Morty</HomeLink>
+        <BackButton />
+      </Container>
+      <Container variant='long' as='main'>
+        <Card character={response.character} />
+      </Container>
+      <Container className='py-16' variant='long' as='section'>
         {response.episodes.map(episode => (
-          <div className='p-2 odd:bg-slate-100' key={episode.id}>
+          <div
+            className='px-4 py-2 first:rounded-t-lg last:rounded-b-lg odd:bg-primary-700 odd:text-primary-400 even:bg-primary-400 even:text-primary-700'
+            key={episode.id}
+          >
             <span>{`${episode.episode} - ${episode.name}`}</span>
           </div>
         ))}
-      </div>
-    </Container>
+      </Container>
+    </>
   )
 }
