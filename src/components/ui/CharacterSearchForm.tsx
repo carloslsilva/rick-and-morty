@@ -8,7 +8,7 @@ export const CharacterSearchForm = () => {
   return (
     <form className='flex flex-row py-12' onSubmit={onSubmit}>
       <input
-        className='flex-grow rounded-l-lg bg-primary-100 px-4 py-2 text-primary-500 outline-none '
+        className='flex-grow rounded-l-lg bg-primary-100 px-4 py-2 text-primary-500 outline-none'
         placeholder='Search by name...'
         autoComplete='off'
         {...register('name')}
