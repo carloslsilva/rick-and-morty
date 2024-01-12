@@ -4,6 +4,7 @@ import {
   faXTwitter
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import clsx from 'clsx'
 import { FC } from 'react'
 import { Container } from './ui/Container'
 
@@ -27,7 +28,10 @@ const contacts = [
 
 export const Footer: FC = () => (
   <Container
-    className='flex flex-row items-center justify-between gap-8 py-16'
+    className={clsx(
+      'flex flex-col items-center justify-center gap-8 py-16',
+      'sm:flex-row sm:items-center sm:justify-between'
+    )}
     variant='long'
     as='footer'
   >
