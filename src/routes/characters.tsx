@@ -18,7 +18,7 @@ export default function Characters() {
         variant='long'
         as='header'
       >
-        <HomeLink>Rick & Morty Characters</HomeLink>
+        <HomeLink>Rick & Morty</HomeLink>
         <Nav next={next} prev={prev} />
       </Container>
       <Container variant='long' as='section'>

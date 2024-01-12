@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { extractIdFromUrl } from '../../lib/extractIdFromUrl'
+import { getCharacterUrl } from '../../lib/getCharacterUrl'
 import type { Character } from '../../lib/types'
 
 type CardProps = {
@@ -13,7 +13,7 @@ export const Card: FC<CardProps> = ({ character, link }) => {
   return link ? (
     <Link
       className='group hover:scale-105'
-      to={extractIdFromUrl(character.url) || '#'}
+      to={getCharacterUrl(character.url) || '#'}
     >
       <Character character={character} />
     </Link>
