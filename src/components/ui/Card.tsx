@@ -41,7 +41,7 @@ const Character: FC<CharacterProps> = ({ character }) => (
       src={character.image}
       alt={character.name}
     />
-    <div className='flex flex-col'>
+    <div className={clsx('flex flex-col px-4 pb-4 md:p-0')}>
       <Description character={character} />
       <Location label='Last known location:' name={character.location.name} />
       <Location label='First seen in:' name={character.origin.name} />
@@ -51,7 +51,7 @@ const Character: FC<CharacterProps> = ({ character }) => (
 
 const Description: FC<CharacterProps> = ({ character }) => (
   <div className='mb-2'>
-    <h2 className='text-2xl font-bold tracking-tight text-primary-100 group-hover:text-amber-500'>
+    <h2 className='text-xl font-bold tracking-tight text-primary-100 group-hover:text-amber-500 md:text-2xl'>
       {character.name}
     </h2>
     <h3 className='text-bold inline-flex items-center gap-2 text-primary-100'>
