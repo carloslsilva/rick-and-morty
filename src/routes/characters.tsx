@@ -14,7 +14,7 @@ export default function Characters() {
   return (
     <>
       <Container
-        className='flex flex-row items-center justify-between py-16'
+        className='flex flex-col gap-8 py-16 sm:flex-row sm:items-center sm:justify-between'
         variant='long'
         as='header'
       >
