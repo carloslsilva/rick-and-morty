@@ -1,7 +1,7 @@
 import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
-import { useSearchForm } from '../../hooks/useSearchForm'
+import { useSearchForm } from '../hooks/useSearchForm'
 
 export const SearchForm = () => {
   const { onSubmit, onReset, register } = useSearchForm()
@@ -9,10 +9,7 @@ export const SearchForm = () => {
   return (
     <form className={clsx('flex flex-col', 'sm:flex-row')} onSubmit={onSubmit}>
       <input
-        className={clsx(
-          'flex-grow rounded-t-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none focus:bg-primary-100',
-          'sm:rounded-none sm:rounded-l-lg'
-        )}
+        className='flex-grow rounded-t-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none focus:bg-primary-100 sm:rounded-none sm:rounded-l-lg'
         placeholder='Search by name...'
         autoComplete='off'
         {...register('name')}
@@ -37,20 +34,13 @@ export const SearchForm = () => {
         <option value='unknown'>Unknown</option>
       </select>
       <button
-        className={clsx(
-          'h-8 bg-red-700 text-primary-100 hover:bg-red-800',
-          'sm:h-auto sm:w-12'
-        )}
+        className='h-8 bg-red-700 text-primary-100 hover:bg-red-800 sm:h-auto sm:w-12'
         onClick={onReset}
       >
         <FontAwesomeIcon icon={faTrash} />
       </button>
       <button
-        className={clsx(
-          'h-8 bg-amber-500 text-primary-100 hover:bg-amber-600',
-          'rounded-b-lg',
-          'sm:h-auto sm:w-12 sm:rounded-none sm:rounded-r-lg'
-        )}
+        className='h-8 rounded-b-lg bg-amber-500 text-primary-100 hover:bg-amber-600 sm:h-auto sm:w-12 sm:rounded-none sm:rounded-r-lg'
         type='submit'
       >
         <FontAwesomeIcon icon={faSearch} />

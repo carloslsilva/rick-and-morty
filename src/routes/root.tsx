@@ -1,8 +1,8 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link, useLoaderData } from 'react-router-dom'
-import { Card } from '../components/ui/Card'
-import { Container } from '../components/ui/Container'
+import { Card } from '../components/Card'
+import { Container } from '../components/Container'
 import { Character } from '../lib/types'
 
 export default function Root() {

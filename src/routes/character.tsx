@@ -1,8 +1,8 @@
 import { useLoaderData } from 'react-router-dom'
-import { BackButton } from '../components/ui/BackButton'
-import { Card } from '../components/ui/Card'
-import { Container } from '../components/ui/Container'
-import { HomeLink } from '../components/ui/HomeLink'
+import { BackButton } from '../components/BackButton'
+import { Card } from '../components/Card'
+import { Container } from '../components/Container'
+import { HomeLink } from '../components/HomeLink'
 import type { CharacterResponse } from '../lib/types'
 
 export default function Character() {

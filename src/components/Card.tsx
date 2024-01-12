@@ -1,8 +1,7 @@
-import clsx from 'clsx'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { getCharacterUrl } from '../../lib/getCharacterUrl'
-import type { Character } from '../../lib/types'
+import { getCharacterUrl } from '../lib/getCharacterUrl'
+import type { Character } from '../lib/types'
 
 type CardProps = {
   character: Character
@@ -27,21 +26,13 @@ type CharacterProps = {
 }
 
 const Character: FC<CharacterProps> = ({ character }) => (
-  <div
-    className={clsx(
-      'flex flex-col justify-center gap-4 rounded-lg bg-primary-700',
-      'md:flex-row md:items-center md:justify-start'
-    )}
-  >
+  <div className='flex flex-col justify-center gap-4 rounded-lg bg-primary-700 md:flex-row md:items-center md:justify-start'>
     <img
-      className={clsx(
-        'h-full w-full rounded-t-lg object-cover',
-        'md:w-48 md:rounded-none md:rounded-s-lg'
-      )}
+      className='h-full w-full rounded-t-lg object-cover md:w-48 md:rounded-none md:rounded-s-lg'
       src={character.image}
       alt={character.name}
     />
-    <div className={clsx('flex flex-col px-4 pb-4 md:p-0')}>
+    <div className='flex flex-col px-4 pb-4 md:p-0'>
       <Description character={character} />
       <Location label='Last known location:' name={character.location.name} />
       <Location label='First seen in:' name={character.origin.name} />
