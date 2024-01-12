@@ -15,7 +15,9 @@ export default function Root() {
         as='main'
         light
       >
-        <h1 className='text-9xl font-bold'>Rick & Morty</h1>
+        <h1 className='text-4xl font-bold sm:text-5xl md:text-7xl lg:text-9xl'>
+          Rick & Morty
+        </h1>
       </Container>
       <Container className='pb-8 pt-24' variant='long' as='section'>
         <div className='grid grid-cols-1 items-center justify-center gap-8 md:grid-cols-2 xl:grid-cols-3'>
