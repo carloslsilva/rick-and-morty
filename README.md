@@ -1,30 +1,42 @@
-# React + TypeScript + Vite
+# Rick and Morty App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple application that uses the rick and morty api to explore the characters and the episodes where they appear
 
-Currently, two official plugins are available:
+## Tools Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Development Environment**: [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Library**: [React](https://react.dev/)
+- **Routing**: [React Router](https://reactrouter.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Deployment**: [Vercel](https://vercel.com)
 
-## Expanding the ESLint configuration
+## Run Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Clone the project:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname
-  }
-}
+```bash
+git clone https://github.com/carloslsilva/rick-and-morty
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Go to the project directory:
+
+```bash
+cd rick-and-morty
+```
+
+Install dependencies
+
+```bash
+pnpm install
+```
+
+Start the server:
+
+```bash
+pnpm dev
+```
+
+After that server should be running on [localhost:5173](http://localhost:5173)
+
+> I am using [pnpm](https://pnpm.io/) you can use [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
