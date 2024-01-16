@@ -1,10 +1,10 @@
 import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { useSearchForm } from '../hooks/useSearchForm'
+import { useSearch } from '../hooks/useSearch'
 
-export const SearchForm = () => {
-  const { onSubmit, onReset, onKeyDown, register } = useSearchForm()
+export const Search = () => {
+  const { onSubmit, onReset, onKeyDown, register } = useSearch()
 
   return (
     <form

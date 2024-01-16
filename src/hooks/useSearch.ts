@@ -12,7 +12,7 @@ const Schema = z.object({
 
 type SearchType = z.infer<typeof Schema>
 
-export function useSearchForm() {
+export function useSearch() {
   const location = useLocation()
   const navigate = useNavigate()
   const { handleSubmit, reset, register } = useForm<SearchType>({
@@ -28,6 +28,7 @@ export function useSearchForm() {
         url += url === '/characters' ? `?${key}=${value}` : `&${key}=${value}`
       }
     }
+
     navigate(url)
   })
 

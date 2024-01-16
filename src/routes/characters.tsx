@@ -3,7 +3,7 @@ import { Card } from '../components/Card'
 import { Container } from '../components/Container'
 import { HomeLink } from '../components/HomeLink'
 import { Nav } from '../components/Nav'
-import { SearchForm } from '../components/SearchForm'
+import { Search } from '../components/Search'
 import { useInfo } from '../hooks/useInfo'
 import type { Character } from '../lib/types'
 
@@ -22,7 +22,7 @@ export default function Characters() {
         <Nav next={next} prev={prev} />
       </Container>
       <Container variant='long' as='section'>
-        <SearchForm />
+        <Search />
         <div className='grid grid-cols-1 gap-8 py-8 lg:grid-cols-2 xl:grid-cols-3'>
           {characters.map(character => (
             <Card key={character.id} character={character} link />
