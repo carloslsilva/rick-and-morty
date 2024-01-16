@@ -2,11 +2,9 @@ import type { CharacterResponse } from './types'
 
 export async function getCharacter(id: number): Promise<CharacterResponse> {
   const characterData = await fetchCharacter(id)
-
   const episodesData = await Promise.all(
     characterData.episode.map(async (e: string) => await fetchEpisode(e))
   )
-
   return { character: characterData, episodes: episodesData }
 }
 
