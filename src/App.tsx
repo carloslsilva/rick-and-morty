@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { characterLoader, charactersLoader, rootLoader } from './loaders'
+import { characterLoader, charactersLoader, rootLoader } from './lib/loaders'
 import Character from './routes/character'
 import Characters from './routes/characters'
 import ErrorPage from './routes/error'

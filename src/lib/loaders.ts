@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs } from 'react-router-dom'
-import { getCharacter } from './lib/getCharacter'
-import { getData } from './lib/getData'
-import { getRandomChars } from './lib/getRandomCharacters'
+import { getCharacter } from './getCharacter'
+import { getData } from './getData'
+import { getRandomChars } from './getRandomCharacters'
 
 export async function rootLoader() {
   const data = await getRandomChars(6)
