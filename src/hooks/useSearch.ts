@@ -1,42 +1,32 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import type { KeyboardEvent } from 'react'
-import { useForm } from 'react-hook-form'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { z } from 'zod'
-
-const Schema = z.object({
-  name: z.string(),
-  gender: z.enum(['', 'male', 'female', 'genderless', 'unknown']),
-  status: z.enum(['', 'alive', 'dead', 'unknown'])
-})
-
-type SearchType = z.infer<typeof Schema>
+import type { ChangeEvent, KeyboardEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { useDebouncedCallback } from 'use-debounce'
 
 export function useSearch() {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const { handleSubmit, reset, register } = useForm<SearchType>({
-    resolver: zodResolver(Schema),
-    defaultValues: { name: '', gender: '', status: '' }
-  })
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const onSubmit = handleSubmit(data => {
-    let url = location.pathname
+  const handleChange = useDebouncedCallback(
+    (
+      key: 'name' | 'status' | 'gender',
+      event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+      const params = new URLSearchParams(searchParams)
+      const value = event.target.value
 
-    for (const [key, value] of Object.entries(data)) {
-      if (value.length > 0) {
-        url += url === '/characters' ? `?${key}=${value}` : `&${key}=${value}`
+      if (value) {
+        params.set(key, value)
+      } else {
+        params.delete(key)
       }
-    }
 
-    navigate(url)
-  })
+      setSearchParams(params)
+    },
+    500
+  )
 
-  const onKeyDown = (e: KeyboardEvent<HTMLFormElement>) => {
+  const handleKey = (e: KeyboardEvent<HTMLFormElement>) => {
     if (e.key === 'Enter') e.preventDefault()
   }
 
-  const onReset = () => reset()
-
-  return { onSubmit, onReset, onKeyDown, register }
+  return { handleChange, handleKey }
 }

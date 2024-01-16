@@ -1,26 +1,19 @@
-import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { useSearch } from '../hooks/useSearch'
 
 export const Search = () => {
-  const { onSubmit, onReset, onKeyDown, register } = useSearch()
+  const { handleChange, handleKey } = useSearch()
 
   return (
-    <form
-      className='flex flex-col sm:flex-row'
-      onKeyDown={onKeyDown}
-      onSubmit={onSubmit}
-    >
+    <form className='flex flex-col gap-2 sm:flex-row' onKeyDown={handleKey}>
       <input
-        className='flex-grow rounded-t-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none focus:bg-primary-100 sm:rounded-none sm:rounded-l-lg'
+        className='flex-grow rounded-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none focus:bg-primary-100'
         placeholder='Search by name...'
         autoComplete='off'
-        {...register('name')}
+        onChange={e => handleChange('name', e)}
       />
       <select
-        className='appearance-none bg-primary-200 p-2 text-primary-500 outline-none hover:bg-primary-300'
-        {...register('status')}
+        className='appearance-none rounded-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none hover:bg-primary-300'
+        onChange={e => handleChange('status', e)}
       >
         <option value=''>Status...</option>
         <option value='alive'>Alive</option>
@@ -28,8 +21,8 @@ export const Search = () => {
         <option value='unknown'>Unknown</option>
       </select>
       <select
-        className='appearance-none bg-primary-200 p-2 text-primary-500 outline-none hover:bg-primary-300'
-        {...register('gender')}
+        className='appearance-none rounded-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none hover:bg-primary-300'
+        onChange={e => handleChange('gender', e)}
       >
         <option value=''>Gender...</option>
         <option value='male'>Male</option>
@@ -37,18 +30,6 @@ export const Search = () => {
         <option value='genderless'>Genderless</option>
         <option value='unknown'>Unknown</option>
       </select>
-      <button
-        className='h-8 bg-red-700 text-primary-100 hover:bg-red-800 sm:h-auto sm:w-12'
-        onClick={onReset}
-      >
-        <FontAwesomeIcon icon={faTrash} />
-      </button>
-      <button
-        className='h-8 rounded-b-lg bg-amber-500 text-primary-100 hover:bg-amber-600 sm:h-auto sm:w-12 sm:rounded-none sm:rounded-r-lg'
-        type='submit'
-      >
-        <FontAwesomeIcon icon={faSearch} />
-      </button>
     </form>
   )
 }
