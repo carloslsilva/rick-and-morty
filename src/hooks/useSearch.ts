@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { ChangeEvent, KeyboardEvent } from 'react'
+import type { KeyboardEvent } from 'react'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
@@ -16,44 +16,46 @@ type SearchType = z.infer<typeof Schema>
 
 export function useSearch() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const { setValue, register } = useForm<SearchType>({
+  const { setValue, watch, register } = useForm<SearchType>({
     resolver: zodResolver(Schema),
     defaultValues: { name: '', gender: '', status: '' }
   })
 
   useEffect(() => {
-    const keys: ('name' | 'gender' | 'status')[] = ['name', 'status', 'gender']
     const params = new URLSearchParams(searchParams)
+    const keys: ('name' | 'gender' | 'status')[] = ['name', 'status', 'gender']
     keys.map(key => {
       const value = params.get(key)
       if (value) setValue(key, value)
     })
   }, [searchParams, setValue])
 
-  const handleChange = useDebouncedCallback(
-    (
-      key: 'name' | 'status' | 'gender',
-      event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-    ) => {
+  const debouncedCallback = useDebouncedCallback(
+    (data: { [key: string]: string }) => {
       const params = new URLSearchParams(searchParams)
-      const value = event.target.value
-
       params.set('page', '1')
-
-      if (value) {
-        params.set(key, value)
-      } else {
-        params.delete(key)
+      for (const [key, value] of Object.entries(data)) {
+        if (value) {
+          params.set(key, value)
+        } else {
+          params.delete(key)
+        }
       }
-
       setSearchParams(params)
     },
-    500
+    300
   )
+
+  useEffect(() => {
+    const subscription = watch(data => {
+      debouncedCallback(data)
+    })
+    return () => subscription.unsubscribe()
+  }, [debouncedCallback, watch])
 
   const handleKey = (e: KeyboardEvent<HTMLFormElement>) => {
     if (e.key === 'Enter') e.preventDefault()
   }
 
-  return { register, handleChange, handleKey }
+  return { register, handleKey }
 }

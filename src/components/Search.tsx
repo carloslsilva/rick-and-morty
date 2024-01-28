@@ -1,7 +1,7 @@
 import { useSearch } from '../hooks/useSearch'
 
 export const Search = () => {
-  const { register, handleChange, handleKey } = useSearch()
+  const { register, handleKey } = useSearch()
 
   return (
     <form className='flex flex-col gap-2 sm:flex-row' onKeyDown={handleKey}>
@@ -10,12 +10,10 @@ export const Search = () => {
         placeholder='Search by name...'
         autoComplete='off'
         {...register('name')}
-        onChange={e => handleChange('name', e)}
       />
       <select
         className='appearance-none rounded-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none hover:bg-primary-300'
         {...register('status')}
-        onChange={e => handleChange('status', e)}
       >
         <option value=''>Status...</option>
         <option value='alive'>Alive</option>
@@ -25,7 +23,6 @@ export const Search = () => {
       <select
         className='appearance-none rounded-lg bg-primary-200 px-4 py-2 text-primary-500 outline-none hover:bg-primary-300'
         {...register('gender')}
-        onChange={e => handleChange('gender', e)}
       >
         <option value=''>Gender...</option>
         <option value='male'>Male</option>
